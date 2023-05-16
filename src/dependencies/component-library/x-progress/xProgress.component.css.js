@@ -1,0 +1,31 @@
+export default `
+/*
+|==================================================|
+| PUBLIC VARIABLES                                 |
+|==================================================|
+| --x-progress-color                               |
+|--------------------------------------------------|
+*/
+
+:host {
+  /* ------------------------- */
+  /* !!! PRIVATE VARIABLES !!! */
+  /* ------------------------- */
+  --_color: var(--x-progress-color, var(--color-black));
+
+  block-size: 1em; /* As per <progress> element. This allows us to set a height on the element. */
+  inline-size: 10em; /* As per <progress> element. This allows us to set a width on the element. */
+}
+
+#root {
+  border: solid var(--border-width) var(--_color);
+  height: 100%;
+  padding: 3px;
+}
+
+.progress-bar {
+  background-color: var(--_color);
+  height: 100%;
+  max-width: 100%;
+}
+`;

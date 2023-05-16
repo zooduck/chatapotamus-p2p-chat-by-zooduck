@@ -1,0 +1,7 @@
+{
+  "currentAssetsPath": "modules/@zooduck/chatapotamus-p2p-chat-by-zooduck/assets",
+  "newAssetsPath": "modules/@zooduck/chatapotamus-p2p-chat-by-zooduck/assets",
+  "scripts": {
+    "update-assets-path": "node build-scripts/updateAssetsPath.build.mjs"
+  }
+}

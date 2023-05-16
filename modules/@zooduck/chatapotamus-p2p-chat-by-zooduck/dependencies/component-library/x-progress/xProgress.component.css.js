@@ -1,0 +1,17 @@
+export default `
+:host {
+  --_color: var(--x-progress-color, var(--color-black));
+  block-size: 1em;
+  inline-size: 10em;
+}
+#root {
+  border: solid var(--border-width) var(--_color);
+  height: 100%;
+  padding: 3px;
+}
+.progress-bar {
+  background-color: var(--_color);
+  height: 100%;
+  max-width: 100%;
+}
+`;

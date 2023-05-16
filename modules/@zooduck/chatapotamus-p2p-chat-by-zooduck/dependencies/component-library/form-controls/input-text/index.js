@@ -1,0 +1,1 @@
+import './inputText.component.js';

@@ -1,0 +1,1 @@
+import './xChat.component.js';

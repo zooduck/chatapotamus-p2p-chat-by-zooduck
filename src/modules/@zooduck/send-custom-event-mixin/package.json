@@ -1,0 +1,22 @@
+{
+  "name": "@zooduck/send-custom-event-mixin",
+  "version": "0.0.1",
+  "description": "Eventful Mixin for non-element classes",
+  "main": "dist/index.module.js",
+  "repository": {
+    "url": "git+https://github.com/zooduck/send-custom-event-mixin.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.mjs"
+  },
+  "author": "zooduck",
+  "license": "MIT",
+  "devDependencies": {
+    "@zooduck/build-tools": "^0.0.6"
+  },
+  "bugs": {
+    "url": "https://github.com/zooduck/send-custom-event-mixin/issues"
+  },
+  "homepage": "https://github.com/zooduck/send-custom-event-mixin#readme"
+}

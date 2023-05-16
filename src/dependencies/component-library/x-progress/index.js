@@ -1,0 +1,1 @@
+import './xProgress.component.js';

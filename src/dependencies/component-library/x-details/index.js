@@ -1,0 +1,1 @@
+import './xDetails.component.js';
