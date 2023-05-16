@@ -20,6 +20,11 @@ main {
   gap: var(--gap-size-medium);
   padding: var(--padding-size-small);
 }
+.summary:focus {
+  outline: dotted 2px var(--color-white);
+  outline-offset: -2px;
+  border-color: transparent;
+}
 :host([disabled]) .summary {
   cursor: not-allowed;
   filter: opacity(0.5);

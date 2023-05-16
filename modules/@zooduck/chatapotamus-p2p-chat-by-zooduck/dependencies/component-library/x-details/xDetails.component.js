@@ -89,6 +89,13 @@ class HTMLXDetailsElement extends WebComponent {
     }
     this.toggleAttribute('open');
   }
+  onSummaryKeyDown(event) {
+    const { code, key, keyCode } = event;
+    const isEnterKey = code === 'Enter' || key === 'Enter' || keyCode === 13;
+    if (isEnterKey) {
+      this.onSummaryClick();
+    }
+  }
   render() {
     this.shadowRoot.innerHTML = '';
     this.shadowRoot.append(this.#createContent());
@@ -97,7 +104,11 @@ class HTMLXDetailsElement extends WebComponent {
   #createContent() {
     return new SafeDOMParser(this).parseFromString`
       <main>
-        <header class="summary" on:click="onSummaryClick()">
+        <header
+          class="summary"
+          on:click="onSummaryClick()"
+          on:keydown="onSummaryKeyDown()"
+          tabindex="0">
           <span class="summary__text" id="summary-text">Details</span>
           ${svgIconService.getIcon(svgIconService.Icon.CHEVRON_UP, { class: 'summary__details-state-chevron icon' })}
         </header>

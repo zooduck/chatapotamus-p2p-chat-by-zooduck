@@ -48,6 +48,7 @@ class HTMLSlideInElement extends WebComponent {
             } else {
               this.sendCustomEvent(this.constructor.EventDict.OPEN);
             }
+            this.#updateTabIndex();
           });
         });
         break;
@@ -60,6 +61,7 @@ class HTMLSlideInElement extends WebComponent {
       return;
     }
     this.render();
+    this.#updateTabIndex();
     this.isReady = true;
   }
   get open() {
@@ -84,6 +86,9 @@ class HTMLSlideInElement extends WebComponent {
         <section class="slotted-content-container" id="slotted-content-container"><slot></slot></section>
       </main>
     `;
+  }
+  #updateTabIndex() {
+    this.tabIndex = this.open ? 0 : -1;
   }
 }
 customElements.define(HTMLSlideInElement.LOCAL_NAME, HTMLSlideInElement);
