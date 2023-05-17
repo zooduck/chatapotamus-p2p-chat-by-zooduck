@@ -21,7 +21,7 @@ main {
   padding: var(--padding-size-small);
 }
 .summary:focus {
-  outline: dotted 2px var(--color-white);
+  outline: dotted 2px var(--_color);
   outline-offset: -2px;
   border-color: transparent;
 }
