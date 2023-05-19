@@ -3,14 +3,15 @@
   "version": "0.0.1",
   "description": "WebRTC P2P Chat Web Component with VoIP, File Transfer and Screen Sharing",
   "main": "modules/@zooduck/chatapotamus-p2p-chat-by-zooduck/index.module.js",
+  "type": "module",
   "repository": {
     "url": "git+https://github.com/zooduck/chatapotamus-p2p-chat-by-zooduck.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node build.mjs",
-    "build-force": "node build.mjs --force",
-    "start": "node build.mjs && node server.mjs"
+    "build": "node build.js",
+    "build-force": "node build.js --force",
+    "start": "node build.js && node server.js"
   },
   "keywords": [
     "webrtc",
@@ -37,5 +38,5 @@
     "url": "https://github.com/zooduck/chatapotamus-p2p-chat-by-zooduck/issues"
   },
   "homepage": "https://github.com/zooduck/chatapotamus-p2p-chat-by-zooduck#readme",
-  "integrity": "4620797504aaf7cc2fcbb5abbd33598d4c9b7c22355992efc1cfda8bafdd8cac"
+  "integrity": "3609c7d3ed3bc46c6ec476dad8e8d12d3149a75abcd76b044e3f26471d958c61"
 }

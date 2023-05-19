@@ -2,8 +2,8 @@ import * as fs from 'node:fs/promises';
 import path from 'node:path';
 import { buildTools } from '@zooduck/build-tools';
 import { commandLineArgs } from '@zooduck/command-line-args';
-import { createSourceFilesIntegrity } from './createSourceFilesIntegrity.util.mjs';
-import { reWriteAssetsPathsInCSSJSFiles } from './rewriteAssetsPathsInCSSJSFiles.util.mjs';
+import { createSourceFilesIntegrity } from './createSourceFilesIntegrity.util.js';
+import { reWriteAssetsPathsInCSSJSFiles } from './rewriteAssetsPathsInCSSJSFiles.util.js';
 
 const packageJSONFileContents = await fs.readFile('./package.json', { encoding: 'utf-8' });
 const packageJSONData = JSON.parse(packageJSONFileContents);
