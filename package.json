@@ -1,6 +1,6 @@
 {
   "name": "@zooduck/chatapotamus-p2p-chat-by-zooduck",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "WebRTC P2P Chat Web Component with VoIP, File Transfer and Screen Sharing",
   "main": "modules/@zooduck/chatapotamus-p2p-chat-by-zooduck/index.module.js",
   "type": "module",
@@ -38,5 +38,5 @@
     "url": "https://github.com/zooduck/chatapotamus-p2p-chat-by-zooduck/issues"
   },
   "homepage": "https://github.com/zooduck/chatapotamus-p2p-chat-by-zooduck#readme",
-  "integrity": "127885505b3efa8467cff01023aa44d1a37d227941c6e6f073387d50da9b199a"
+  "integrity": "d68d3a9a2de8c24842e990a46d8f2b29a18bb26829b3cce97700afaae96ac788"
 }
