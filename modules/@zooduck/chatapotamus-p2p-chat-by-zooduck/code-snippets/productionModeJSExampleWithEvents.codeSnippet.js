@@ -13,10 +13,7 @@ window.addEventListener(ChatapotamusP2PChatByZooduckEvent.DATA_CHANNEL_OPEN, (ev
   if (initiator === localUser) {
     return;
   }
-  const acceptConnection = confirm(\`\${remoteUser} is requesting a connection.\`);
-  if (!acceptConnection) {
-    event.target.closeConnection(remoteUser);
-  }
+  alert(\`Connection to \${remoteUser} established!\`);
 });
 
 window.addEventListener(ChatapotamusP2PChatByZooduckEvent.DATA_CHANNEL_CLOSE, (event) => {
