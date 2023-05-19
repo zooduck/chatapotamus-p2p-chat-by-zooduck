@@ -392,6 +392,15 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
   /**
    * @private
    * @readonly
+   * @type {string}
+   */
+  get #alertTitle() {
+    return this.#isStandaloneMode ? this.localName : '';
+  }
+
+  /**
+   * @private
+   * @readonly
    * @type {boolean}
    */
   get #isStandaloneMode() {
@@ -604,7 +613,7 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
       `Share this with ${remoteHandle} so they can generate a SDP answer for you.`
     ], {
       onElement: this.alerts === this.Alerts.ELEMENT ? this : null,
-      title: this.localName
+      title: this.#alertTitle
     });
 
     navigator.clipboard.writeText(JSON.stringify(sdpOffer));
@@ -663,7 +672,7 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
     const disconnectUser = await alertService.confirm(`Terminate connection with ${connectionID}?`, {
       actionType: 'warning',
       onElement: this.alerts === this.Alerts.ELEMENT ? this : null,
-      title: this.localName
+      title: this.#alertTitle
     });
 
     if (!disconnectUser) {
@@ -726,7 +735,7 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
       if (this.alerts !== this.Alerts.NONE) {
         alertService.alert(`Your handle has been copied to the clipboard.`, {
           onElement: this.alerts === this.Alerts.ELEMENT ? this : null,
-          title: this.localName
+          title: this.#alertTitle
         });
       }
     } catch (error) {
@@ -842,7 +851,7 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
           if (this.alerts !== this.Alerts.NONE) {
             alertService.alert(error, {
               onElement: this.alerts === this.Alerts.ELEMENT ? this : null,
-              title: this.localName
+              title: this.#alertTitle
             });
           }
         });
@@ -968,7 +977,7 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
         if (this.alerts !== this.Alerts.NONE) {
           alertService.alert([`File ${name} could not be sent to ${toID}.`, error], {
             onElement: this.alerts === this.Alerts.ELEMENT ? this : null,
-            title: this.localName
+            title: this.#alertTitle
           });
         }
       }).finally(() => {
@@ -1054,7 +1063,7 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
       console.error(error);
       alertService.alert(error, {
         onElement: this.alerts === this.Alerts.ELEMENT ? this : null,
-        title: this.localName
+        title: this.#alertTitle
       });
     }
   }
@@ -1105,7 +1114,7 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
       `Share this with ${remoteHandle} so they can open a direct peer-to-peer connection with you.`
     ], {
       onElement: this.alerts === this.Alerts.ELEMENT ? this : null,
-      title: this.localName
+      title: this.#alertTitle
     });
 
     navigator.clipboard.writeText(JSON.stringify(sdpAnswer));
@@ -1143,7 +1152,7 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
           if (this.alerts !== this.Alerts.NONE) {
             await alertService.alert(error, {
               onElement: this.alerts === this.Alerts.ELEMENT ? this : null,
-              title: this.localName
+              title: this.#alertTitle
             });
           }
           toggleCameraButton.toggle(false);
@@ -1191,7 +1200,7 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
           if (this.alerts !== this.Alerts.NONE) {
             await alertService.alert(error, {
               onElement: this.alerts === this.Alerts.ELEMENT ? this : null,
-              title: this.localName
+              title: this.#alertTitle
             });
           }
           toggleMicrophoneButton.toggle(false);
@@ -1268,7 +1277,7 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
     if (!connectionClosedByUs && this.alerts !== this.Alerts.NONE) {
       await alertService.alert(`Connection terminated by ${remoteConnectionID}.`, {
         onElement: this.alerts === this.Alerts.ELEMENT ? this : null,
-        title: this.localName
+        title: this.#alertTitle
       });
     }
 
@@ -1339,7 +1348,7 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
 
     await alertService.alert(`Connection to ${remoteConnectionID} established!`, {
       onElement: this.alerts === this.Alerts.ELEMENT ? this : null,
-      title: this.localName
+      title: this.#alertTitle
     });
 
     if (!this.#isStandaloneMode) {
@@ -2219,7 +2228,7 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
       'You can copy your handle to the clipboard by clicking on it in the header.'
     ], {
       onElement: this.alerts === this.Alerts.ELEMENT ? this : null,
-      title: this.localName
+      title: this.#alertTitle
     });
 
     this.#enableSDPFormButtons();
