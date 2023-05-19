@@ -1392,7 +1392,7 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
     infoBarHandleElement.title = this.handle;
     this.shadowRoot.getElementById('set-handle-form').remove();
     await alertService.alert([
-      `Handle saved as "${this.#connectionID}".`,
+      `Handle saved as "${this.handle}".`,
       'You can copy your handle to the clipboard by clicking on it in the header.'
     ], {
       onElement: this.alerts === this.Alerts.ELEMENT ? this : null,

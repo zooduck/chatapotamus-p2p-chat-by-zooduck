@@ -517,6 +517,11 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
         handle: this.handle
       }
     });
+
+    // -------------------------------------------------
+    // No alert feedback since we do not know if this
+    // method was called via user interaction or not.
+    // -------------------------------------------------
   }
 
   /**
@@ -2210,7 +2215,7 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
     this.shadowRoot.getElementById('set-handle-form').remove();
 
     await alertService.alert([
-      `Handle saved as "${this.#connectionID}".`,
+      `Handle saved as "${this.handle}".`,
       'You can copy your handle to the clipboard by clicking on it in the header.'
     ], {
       onElement: this.alerts === this.Alerts.ELEMENT ? this : null,
