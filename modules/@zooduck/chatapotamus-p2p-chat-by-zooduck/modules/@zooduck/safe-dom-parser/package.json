@@ -3,12 +3,13 @@
   "version": "0.0.1",
   "description": "Feature-rich implementation of DOMParser with XSS protection and sanitization built-in",
   "main": "dist/index.module.js",
+  "type": "module",
   "repository": {
     "url": "git+https://github.com/zooduck/safe-dom-parser.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node build.mjs"
+    "build": "node build.js"
   },
   "author": "zooduck",
   "license": "MIT",

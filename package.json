@@ -24,6 +24,11 @@
   ],
   "author": "zooduck",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zooduck/chatapotamus-p2p-chat-by-zooduck/issues"
+  },
+  "homepage": "https://github.com/zooduck/chatapotamus-p2p-chat-by-zooduck#readme",
+  "integrity": "88146ea5d1d52edc3ba2ce3d75a832ba6d4f7b58be47c2fc789a126bf2e935a6",
   "dependencies": {
     "@zooduck/safe-dom-parser": "^0.0.1",
     "@zooduck/send-custom-event-mixin": "^0.0.1",
@@ -32,11 +37,6 @@
   "devDependencies": {
     "@zooduck/build-tools": "^0.0.1",
     "@zooduck/command-line-args": "^0.0.1",
-    "@zooduck/simple-server": "^0.0.1"
-  },
-  "bugs": {
-    "url": "https://github.com/zooduck/chatapotamus-p2p-chat-by-zooduck/issues"
-  },
-  "homepage": "https://github.com/zooduck/chatapotamus-p2p-chat-by-zooduck#readme",
-  "integrity": "df730b02e62b3923b320c3b3dd17520ee9f4011b799d22dd6be3c80bc3ccb99e"
+    "@zooduck/simple-server": "^0.0.2"
+  }
 }
