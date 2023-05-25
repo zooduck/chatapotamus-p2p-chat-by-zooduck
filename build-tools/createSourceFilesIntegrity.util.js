@@ -23,11 +23,9 @@ const createSourceFilesIntegrity = async () => {
   };
 
   const pkg = await fs.readFile('./package.json', { encoding: 'utf-8' });
-  const pkgData = JSON.parse(pkg);
+  const { version } = JSON.parse(pkg);
 
-  delete pkgData.integrity;
-
-  combinedFileContents += JSON.stringify(pkgData);
+  combinedFileContents += version;
 
   await readFiles('src');
   await readFiles('distributable-only-files-and-folders');
