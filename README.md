@@ -4,7 +4,14 @@ A WebRTC web component for managing peer-to-peer connections with text chat, VoI
 
 ![screenshot.png](https://raw.githubusercontent.com/zooduck/chatapotamus-p2p-chat-by-zooduck/master/screenshot.png)
 
-## Install
+## For users with an access token
+
+Add a `.npmrc` file to your project, with the following lines:
+
+```text
+@zooduck:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=YOUR_ACCESS_TOKEN
+```
 
 Install from the command line:
 
@@ -18,6 +25,10 @@ Install via package.json:
 "@zooduck/chatapotamus-p2p-chat-by-zooduck": "latest"
 ```
 
+## For users without an access token
+
+Clone or [Download](https://github.com/zooduck/chatapotamus-p2p-chat-by-zooduck/archive/refs/heads/master.zip) the repository to your machine.
+
 ## Getting started
 
 Copy the `modules` folder to your project, making sure to place it in the root directory where files are served. (See "Fixing assets path issues" below if you are unable to do this).
@@ -27,13 +38,13 @@ Copy the `modules` folder to your project, making sure to place it in the root d
 Import using a module file:
 
 ```javascript
-import 'path/to/chatapotamus-p2p-chat-by-zooduck/index.module.js'
+import 'modules/@zooduck/chatapotamus-p2p-chat-by-zooduck/index.module.js'
 ```
 
 Import using a script tag:
 
 ```html
-<script type="module" src="path/to/chatapotamus-p2p-chat-by-zooduck/index.module.js"></script>
+<script type="module" src="modules/@zooduck/chatapotamus-p2p-chat-by-zooduck/index.module.js"></script>
 ```
 
 ## Use
