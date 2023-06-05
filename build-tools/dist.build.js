@@ -18,7 +18,7 @@ const buildDistributable = async () => {
   }
 
   const DIST = path.join('modules', name);
-  const FILE_EXTENSION_REGEX = /\.[a-zA-Z]+$/;
+  const FILE_EXTENSION_REGEX = /\.[a-zA-Z0-9]+$/;
 
   await fs.rm(DIST, { recursive: true, force: true });
   await fs.mkdir(DIST, { recursive: true });
@@ -79,7 +79,7 @@ const buildDistributable = async () => {
       try {
         fileExtension = file.name.match(FILE_EXTENSION_REGEX)[0];
       } catch (error) {
-        console.warn(error);
+        console.warn(error, file.name);
         continue;
       }
 
