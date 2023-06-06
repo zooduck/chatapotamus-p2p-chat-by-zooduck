@@ -20,7 +20,7 @@ import { infoBarHeaderTemplate } from './templates/info-bar-header/infoBarHeader
 import { handleSelectorTemplate } from './templates/handle-selector/handleSelector.template.js';
 import { localMediaStreamsTemplate } from './templates/local-media-streams/localMediaStreams.template.js';
 import { dataChannelFileSender } from '../../dependencies/utils/dataChannelFileSender.util.js';
-import { networkUtils } from '../../dependencies/utils/networkUtils.util.js';
+import { NetworkUtils } from '../../dependencies/utils/NetworkUtils.util.js';
 import { wait } from '../../dependencies/utils/wait.util.js';
 import { WaitTimeCalculator } from '../../dependencies/utils/WaitTimeCalculator.util.js';
 import mediaStreamAudioOnlyPosterSVGDataImage from '../../assets/svg-data-image/media_stream_audio_only_poster.svg.js';
@@ -41,6 +41,7 @@ const variablesStyleSheet = await loadCSSStyleSheet({
 await svgIconService.loadIcons([svgIconService.Icon.PAPERCLIP]);
 class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
   static LOCAL_NAME = 'chatapotamus-p2p-chat-by-zooduck';
+  static FONT_FAMILY_TO_LOAD = 'Roboto Flex';
   #DEFAULT_ALERTS = 'element';
   #DEFAULT_EMPTY_CHAT_PLACEHOLDER = 'For you, there is no Massage.';
   #DEFAULT_ICE_SERVERS = [
@@ -56,12 +57,14 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
   #connectionID;
   #connectionsClosedByUs = new Set();
   #connectionsService;
+  #fontReadyResolve;
   #iceGatheringTimeSeconds;
   #iceServers;
   #isFileSendInProgress;
   #isProductionMode;
   #mediaStreamService;
   #natType;
+  #networkUtils;
   #remoteScreenShares = new Map();
   #resizeObserver;
   #xChatElements;
@@ -71,14 +74,25 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
     this.shadowRoot.adoptedStyleSheets = [variablesStyleSheet, globalStyleSheet, styleSheet];
     this.#mediaStreamService = new MediaStreamService();
     this.#connectionsService = new ConnectionsService(this.#mediaStreamService);
+    this.#networkUtils = new NetworkUtils();
     this.#resizeObserver = new ResizeObserver(this.#onResize.bind(this));
     this.#xChatElements = new Map();
     this.#xChatElements.set('__PLACEHOLDER__', this.#createXChatPlaceholder());
+    this.fontReadyPromise = new Promise((resolve) => {
+      this.#fontReadyResolve = resolve;
+      const isFontLoaded = !!Array.from(document.fonts).find(({ family, status }) => {
+        return family.replace(/["']/g, '') === this.constructor.FONT_FAMILY_TO_LOAD && status === 'loaded';
+      });
+      if (isFontLoaded) {
+        return resolve();
+      }
+      setTimeout(resolve, 1000);
+    });
     this.#insertExternalResourceLinks([
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto+Flex:wdth,wght@25..151,100..1000&display=swap' }
     ]);
-    networkUtils.getNATType().then((natType) => {
+    this.#networkUtils.getNATType().then((natType) => {
       this.#natType = natType;
       this.ready().then(() => {
         this.shadowRoot.getElementById('info-bar-nat-type').textContent = this.#natType === 'symmetric'
@@ -173,10 +187,14 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
     if (this.hasRendered) {
       return;
     }
-    this.render();
-    useCustomScrollbars.withDocument(this.shadowRoot);
-    this.#mediaStreamService.display = this.shadowRoot.getElementById('local-media-streams-display');
-    this.isReady = true;
+    this.fontReadyPromise.then(() => {
+      this.render();
+      useCustomScrollbars.withDocument(this.shadowRoot);
+      this.#mediaStreamService.display = this.shadowRoot.getElementById('local-media-streams-display');
+      this.isReady = true;
+    });
+    document.fonts.addEventListener('loadingdone', this.#fontReadyResolve);
+    this.#triggerFontLoad();
   }
   get alerts() {
     if (!this.#isStandaloneMode && Object.values(this.Alerts).includes(this.getAttribute('alerts'))) {
@@ -1002,9 +1020,11 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
     this.#updateIncomingMediaStreamsDetailsSummary();
   }
   #onResize() {
-    this.#setMaxContentHeight();
-    this.#setMaxHeightForSlideInContent();
-    this.#updateLocalMediaStreamsControlButtons();
+    this.ready().then(() => {
+      this.#setMaxContentHeight();
+      this.#setMaxHeightForSlideInContent();
+      this.#updateLocalMediaStreamsControlButtons();
+    });
   }
   #onScreenShare(event) {
     const { mediaStreamID } = event.detail;
@@ -1249,7 +1269,7 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
     this.ready().then(() => {
       this.shadowRoot.getElementById('info-bar-ice-gathering-time').textContent = '';
       const iceServers = this.#iceServers || this.#DEFAULT_ICE_SERVERS;
-      networkUtils.getICEGatheringTime(iceServers).then((iceGatheringTime) => {
+      this.#networkUtils.getICEGatheringTime(iceServers).then((iceGatheringTime) => {
         this.#iceGatheringTimeSeconds = parseFloat(new Number(iceGatheringTime / 1000).toFixed(2));
         this.shadowRoot.getElementById('info-bar-ice-gathering-time').textContent = this.#iceGatheringTimeSeconds + 's';
       });
@@ -1455,6 +1475,13 @@ class HTMLChatapotamusP2PChatByZooduckElement extends WebComponent {
       default:
         break;
     }
+  }
+  async #triggerFontLoad() {
+    const emptySpanElement = document.createElement('span');
+    emptySpanElement.style.fontFamily = this.constructor.FONT_FAMILY_TO_LOAD;
+    document.body.append(emptySpanElement);
+    await this.fontReadyPromise;
+    emptySpanElement.remove();
   }
   #updateConnectingInfo({ isConnecting, label = '' } = {}) {
     this.shadowRoot.getElementById('info-bar-connecting-info').classList.toggle('info-bar__connecting-info--visible', isConnecting);
