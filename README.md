@@ -6,7 +6,9 @@ A WebRTC web component for managing peer-to-peer connections with text chat, VoI
 
 Visit [Github Pages](https://zooduck.github.io/chatapotamus-p2p-chat-by-zooduck/) to see this component in action.
 
-## For users with an access token
+## Installation
+
+### For users with an access token
 
 Add a `.npmrc` file to your project, with the following lines:
 
@@ -27,7 +29,7 @@ Install via package.json:
 "@zooduck/chatapotamus-p2p-chat-by-zooduck": "latest"
 ```
 
-## For users without an access token
+### For users without an access token
 
 Clone or [Download](https://github.com/zooduck/chatapotamus-p2p-chat-by-zooduck/archive/refs/heads/master.zip) the repository to your machine.
 
