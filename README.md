@@ -13,7 +13,7 @@ This component is hosted by the [jsdelivr](https://www.jsdelivr.com/) CDN.
 Simply add the following module script to your document head:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/zooduck/chatapotamus-p2p-chat-by-zooduck@latest/modules/%40zooduck/chatapotamus-p2p-chat-by-zooduck/index.module.js" type="module">
+<script src="https://cdn.jsdelivr.net/gh/zooduck/chatapotamus-p2p-chat-by-zooduck@latest/modules/%40zooduck/chatapotamus-p2p-chat-by-zooduck/index.module.js" type="module"></script>
 ```
 
 Or import using a module file:
