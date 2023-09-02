@@ -30,6 +30,26 @@ Add the component to your page:
 <chatapotamus-p2p-chat-by-zooduck api-docs></chatapotamus-p2p-chat-by-zooduck>
 ```
 
+## RTC Configuration
+
+The component ships with a default RTC Configuration that includes STUN servers only.
+
+If you require TURN servers, or want to provide your own STUN servers, use the `iceServers` property:
+
+```javascript
+const p2pChatElement = document.querySelector('chatapotamus-p2p-chat-by-zooduck')
+p2pChatElement.iceServers = [
+  {
+    urls: 'stun:a.relay.metered.ca:80'
+  },
+  {
+    urls: 'turn:a.relay.metered.ca:80',
+    username: '<username>',
+    credential: '<password>'
+  }
+]
+```
+
 ## Self hosting
 
 The easiest way to use this component is via CDN (as explained in the "Getting Started" section near the top of this file).
@@ -79,26 +99,6 @@ Import using a module file:
 
 ```javascript
 import 'modules/@zooduck/chatapotamus-p2p-chat-by-zooduck/index.module.js'
-```
-
-## RTC Configuration
-
-The component ships with a default RTC Configuration that includes STUN servers only.
-
-If you require TURN servers, or want to provide your own STUN servers, use the `iceServers` property:
-
-```javascript
-const p2pChatElement = document.querySelector('chatapotamus-p2p-chat-by-zooduck')
-p2pChatElement.iceServers = [
-  {
-    urls: 'stun:a.relay.metered.ca:80'
-  },
-  {
-    urls: 'turn:a.relay.metered.ca:80',
-    username: '<username>',
-    credential: '<password>'
-  }
-]
 ```
 
 Note: For privacy reaons, the `iceServers` getter will always return the default configuration.
