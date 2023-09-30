@@ -1,3 +1,6 @@
+/* ------------------------------- */
+/* @zooduck/safe-dom-parser v0.0.1 */
+/* ------------------------------- */
 class SafeDOMParser {
   #IDL_ATTRIBUTE_PLACEHOLDER_PREFIX = '__safe-dom-parser-idl-attribute-placeholder__';
   #eventListenerContext;

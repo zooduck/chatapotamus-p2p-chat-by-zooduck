@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/zooduck/safe-dom-parser#readme",
   "devDependencies": {
-    "@zooduck/build-tools": "^0.0.1"
+    "@zooduck/build-tools": "^0.0.2"
   }
 }

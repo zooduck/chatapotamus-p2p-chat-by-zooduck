@@ -4,27 +4,27 @@ A WebRTC web component for managing peer-to-peer connections with text chat, VoI
 
 ![screenshot.png](/screenshot.png?raw=true)
 
+Visit [Github Pages](https://zooduck.github.io/chatapotamus-p2p-chat-by-zooduck/) to see this component in action.
+
 ## Getting started
 
-Copy the `modules` folder to your project, making sure to place it in the root directory where files are served. (See "Fixing assets path issues" below if you are unable to do this).
+This component is hosted by the [jsdelivr](https://www.jsdelivr.com/) CDN.
 
-## Import
-
-Import using a module file:
-
-```javascript
-import 'modules/@zooduck/chatapotamus-p2p-chat-by-zooduck/index.module.js'
-```
-
-Import using a `<script>` tag:
+Simply add the following module script to your document head:
 
 ```html
-<script type="module" src="modules/@zooduck/chatapotamus-p2p-chat-by-zooduck/index.module.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/zooduck/chatapotamus-p2p-chat-by-zooduck@latest/modules/%40zooduck/chatapotamus-p2p-chat-by-zooduck/index.module.js" type="module"></script>
+```
+
+Or import using a module file:
+
+```javascript
+import 'https://cdn.jsdelivr.net/gh/zooduck/chatapotamus-p2p-chat-by-zooduck@latest/modules/%40zooduck/chatapotamus-p2p-chat-by-zooduck/index.module.js'
 ```
 
 ## Use
 
-Add the component to your webpage:
+Add the component to your page:
 
 ```html
 <chatapotamus-p2p-chat-by-zooduck api-docs></chatapotamus-p2p-chat-by-zooduck>
@@ -48,6 +48,57 @@ p2pChatElement.iceServers = [
     credential: '<password>'
   }
 ]
+```
+
+## Self hosting
+
+The easiest way to use this component is via CDN (as explained in the "Getting Started" section near the top of this file).
+
+*Unless you have a specific reason to host the component yourself, you can ignore the following instructions.*
+
+## Installation
+
+### For users with an access token
+
+Add a `.npmrc` file to your project, with the following lines:
+
+```text
+@zooduck:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=YOUR_ACCESS_TOKEN
+```
+
+Install from the command line:
+
+```node
+npm install @zooduck/chatapotamus-p2p-chat-by-zooduck@latest
+```
+
+Install via package.json:
+
+```json
+"@zooduck/chatapotamus-p2p-chat-by-zooduck": "latest"
+```
+
+### For users without an access token
+
+Clone or [Download](https://github.com/zooduck/chatapotamus-p2p-chat-by-zooduck/archive/refs/heads/master.zip) the repository to your machine.
+
+## Adding the component to your project
+
+Copy the `modules` folder to your project, making sure to place it in the root directory where files are served. (See "Fixing assets path issues" below if you are unable to do this).
+
+## Import
+
+Import using a module script:
+
+```html
+<script src="modules/@zooduck/chatapotamus-p2p-chat-by-zooduck/index.module.js" type="module"></script>
+```
+
+Import using a module file:
+
+```javascript
+import 'modules/@zooduck/chatapotamus-p2p-chat-by-zooduck/index.module.js'
 ```
 
 Note: For privacy reaons, the `iceServers` getter will always return the default configuration.

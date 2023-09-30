@@ -16,14 +16,14 @@
  *   #createButton() {
  *     // Don't forget to pass the event listener context to the constructor!
  *     return new SafeDOMParser(this).parseFromString`
- *       <button on:click="onClickHandler()"></button>
+ *       <button on:click="onClickHandler()">Click me</button>
  *     `
  *   }
- *   // Always use all lowercase alpha characters for custom events:
  *   #createButtonWithCustomEventListener() {
+ *     // Always use all lowercase alpha characters for custom event types!
  *     // Don't forget to pass the event listener context to the constructor!
  *     return new SafeDOMParser(this).parseFromString`
- *       <custom-button on:clicketyclickclick="onClicketyClickClickHandler()"></custom-button>
+ *       <custom-button on:clicketyclickclick="onClicketyClickClickHandler()">Click me</custom-button>
  *     `
  *   }
  * }
