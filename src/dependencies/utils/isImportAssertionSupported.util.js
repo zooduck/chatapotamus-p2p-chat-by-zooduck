@@ -4,15 +4,10 @@
  * @returns {boolean}
  */
 const isImportAssertionSupported = (assertionType) => {
-  let isSupported;
-  try {
-    new Function(`import('', { assert: { type: '${assertionType}' } })`);
-    isSupported = true;
-  } catch {
-    isSupported = false;
-  }
+  const SUPPORTED_ASSERTION_TYPES_REGEX = /^(css|json)$/;
+  const SUPPORTED_RENDERING_ENGINE_REGEX = /Chrome\/\d{3}/;
 
-  return isSupported;
+  return SUPPORTED_ASSERTION_TYPES_REGEX.test(assertionType) && SUPPORTED_RENDERING_ENGINE_REGEX.test(navigator.userAgent);
 };
 
 export { isImportAssertionSupported };

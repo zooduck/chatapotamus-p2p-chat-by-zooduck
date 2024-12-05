@@ -28,7 +28,7 @@
     "url": "https://github.com/zooduck/chatapotamus-p2p-chat-by-zooduck/issues"
   },
   "homepage": "https://github.com/zooduck/chatapotamus-p2p-chat-by-zooduck#readme",
-  "integrity": "33c89c44fd50ddb1d8de762d80722dd73c4fba56b199c79fe9ef2b8efbb80aa3",
+  "integrity": "724411e2a77a485827009f428f376172c2e879c0b34d6936ec290150a78e2fe6",
   "dependencies": {
     "@zooduck/safe-dom-parser": "^0.0.1",
     "@zooduck/send-custom-event-mixin": "^0.0.1",
